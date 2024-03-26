@@ -1,0 +1,25 @@
+bootcamp-setup:
+  enterprise: "ghas-bootcamp"
+  org-prefix: "ghas-bootcamp"
+  billing-admin: "leftrightleft"
+  # labels are used in issue ops
+  labels:
+    working: "bootcamp:setup:working"
+    done: "bootcamp:setup:done"
+    error: "bootcamp:setup:error"
+    new: "bootcamp::new"
+  # List of repos to fork into attendees orgs.  THESE HAVE TO BE PUBLIC
+  repos-to-fork:
+    - "ghas-bootcamp-resources/.github"
+    - "ghas-bootcamp-resources/ghas-bootcamp-WebGoat"
+    - "ghas-bootcamp-resources/ghas-bootcamp-java"
+    - "ghas-bootcamp-resources/ghas-bootcamp-python"
+    - "ghas-bootcamp-resources/ghas-bootcamp-javascript"
+bootcamp-teardown:
+  # How long (in days) should the environtment be available for?
+  duration: 14
+  # labels are used in issue ops
+  labels:
+    done: "bootcamp:teardown:done"
+    error: "bootcamp:teardown:error"
+    hold: "bootcamp::hold"
