@@ -1,0 +1,57 @@
+name: GHAS Bootcamp Teardown
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to teardown'
+        required: true
+        type: string
+  schedule:
+    - cron: 0 0 * * *
+   
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  bootcamp-teardown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
+      
+      - name: Manual Teardown
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          # Set issue number as env variable
+          WORKING_REPO=${{ github.event.repository.full_name }}
+          ISSUE_NUM=${{ github.event.inputs.issue_number }}
+
+          # execute python script
+          python bootcamp-teardown.py $WORKING_REPO $ISSUE_NUM
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADMIN_TOKEN: ${{ secrets.ENT_ADMIN_TOKEN }}
+
+      - name: Scheduled Teardown
+        if: github.event_name == 'schedule'
+        run: |
+          # Set issue number as env variable
+          WORKING_REPO=${{ github.event.repository.full_name }}
+          ISSUE_NUM=${{ github.event.inputs.issue_number }}
+
+          # execute python script.  I'm passing 0 as the issue number to indicate that this is a scheduled teardown
+          python bootcamp-teardown.py $WORKING_REPO 0
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADMIN_TOKEN: ${{ secrets.ENT_ADMIN_TOKEN }}

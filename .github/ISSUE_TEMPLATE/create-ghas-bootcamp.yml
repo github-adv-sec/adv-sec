@@ -1,0 +1,32 @@
+name: New GHAS bootcamp environment setup
+description: Use this form to create a new GHAS bootcamp environment
+title: "GHAS bootcamp request"
+labels: ["bootcamp::new"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## New Bootcamp Environment Request
+        Let's get started with configuring a new bootcamp.  Enter the following information to provision the environment.
+  - type: input
+    id: bootcamp-date
+    attributes:
+      label: Bootcamp Date
+      description: "Enter the date of the bootcamp in the format YYYY-MM-DD.  ex: 2021-10-31"
+      placeholder: "YYYY-MM-DD"
+  - type: textarea
+    id: attendees
+    attributes:
+      label: Attendees
+      description: "List attendee handles in a comma-separated list without the '@' symbol.  ex: leftrightleft, securingdev, mona"
+      placeholder: "leftrightleft, securingdev, mona"
+    validations:
+      required: true
+  - type: textarea
+    id: facilitators
+    attributes:
+      label: Facilitators
+      description: "List facilitator handles in a comma-separated list without the '@' symbol.  ex: leftrightleft, securingdev, mona"
+      placeholder: "leftrightleft, securingdev, mona"
+    validations:
+      required: true
