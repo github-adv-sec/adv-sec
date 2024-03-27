@@ -1,7 +1,7 @@
 bootcamp-setup:
   enterprise: "CloudLabs-Enterprise"
   org-prefix: "ghas-bootcamp"
-  billing-admin: "CloudLabs-Enterprise"
+  billing-admin: "cloudlabsai-git"
   # labels are used in issue ops
   labels:
     working: "bootcamp:setup:working"
