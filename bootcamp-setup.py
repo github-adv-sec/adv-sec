@@ -111,7 +111,7 @@ def provision_enironments(
                 org_name = org_name[0:38]
 
             org_id, org_name = admin_client.org.create(
-                enterprise_id,
+                
                 org_name,
                 facilitator_handles,
                 f"{config['billing-admin']}@spektrasystems.com",
