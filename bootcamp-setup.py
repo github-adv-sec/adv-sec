@@ -114,7 +114,7 @@ def provision_enironments(
                 enterprise_id,
                 org_name,
                 facilitator_handles,
-                f"{config['billing-admin']}@github.com",
+                f"{config['billing-admin']}@spektrasystems.com",
             )
             attendee.update({"org_id": org_id, "org_name": org_name})
         except Exception:
